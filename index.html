@@ -2,120 +2,109 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Germany 2026 Travel Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Германия 2026 PRO</title>
 
 <style>
-body{
+
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
 font-family:Segoe UI,Arial,sans-serif;
 background:#0f172a;
 color:white;
 }
 
 header{
+background:linear-gradient(135deg,#1e293b,#111827);
 padding:40px;
 text-align:center;
-background:#111827;
+}
+
+header h1{
+font-size:40px;
+margin-bottom:10px;
+}
+
+header p{
+font-size:18px;
+color:#cbd5e1;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+padding:20px;
 }
 
 .card{
 background:#1e293b;
-margin:15px;
+border-radius:20px;
 padding:20px;
-border-radius:16px;
+margin-bottom:20px;
+box-shadow:0 0 15px rgba(0,0,0,0.3);
 }
 
-h1{
-margin:0;
-}
-
-a{
+.card h2{
+margin-bottom:15px;
 color:#60a5fa;
 }
 
-.day{
-margin-top:10px;
-padding:10px;
+.route-day{
 background:#334155;
-border-radius:10px;
+padding:15px;
+border-radius:12px;
+margin-top:10px;
 }
+
+button{
+background:#2563eb;
+color:white;
+border:none;
+padding:10px 15px;
+border-radius:10px;
+cursor:pointer;
+}
+
+.checklist label{
+display:block;
+padding:6px;
+}
+
+footer{
+padding:30px;
+text-align:center;
+color:#94a3b8;
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
-<h1>🇩🇪 Germany 2026</h1>
-<p>Personal Travel Dashboard</p>
+<h1>🇩🇪 Германия 2026 PRO</h1>
+<p>Мой персональный путеводитель</p>
 </header>
 
-<div class="card">
-<h2>✈️ Flights</h2>
-<p>Condor DE4309 TLV → FRA</p>
-<p>Condor DE4308 FRA → TLV</p>
-</div>
+<div class="container">
 
 <div class="card">
-<h2>🚗 Car Rental</h2>
-<p>Alamo Frankfurt Airport</p>
-</div>
+<h2>✈️ Перелёт</h2>
 
-<div class="card">
-<h2>🏨 Hotels</h2>
-
-<p>Relaxans Dinkelsbühl</p>
-
-<p>Bergheim 41 Hotel im Alten Hallenbad</p>
+<p>Тель-Авив → Франкфурт</p>
+<p>Франкфурт → Тель-Авив</p>
 
 </div>
 
 <div class="card">
-<h2>📅 Route</h2>
+<h2>🚗 Автомобиль</h2>
 
-<div class="day">
-Day 1
-<br>
-Frankfurt → Wertheim Village → Würzburg → Dinkelsbühl
-</div>
+<p>Получение автомобиля во Франкфурте</p>
 
-<div class="day">
-Day 2
-<br>
-Nördlingen → Harburg
-</div>
-
-<div class="day">
-Day 3
-<br>
-Ulm
-</div>
-
-<div class="day">
-Day 4
-<br>
-Nürnberg
-</div>
-
-<div class="day">
-Day 5
-<br>
-Stuttgart
-</div>
-
-<div class="day">
-Day 6
-<br>
-Heidelberg
-</div>
-
-<div class="day">
-Day 7
-<br>
-Rüdesheim → Bacharach → Frankfurt Airport
-</div>
-
-</div>
-
-</body>
-</html>
+<textarea style
