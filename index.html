@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Германия 2026 PRO</title>
@@ -116,7 +113,6 @@ color:#94a3b8;
 <h2>✈️ Перелёт</h2>
 
 <p>Тель-Авив → Франкфурт</p>
-
 <p>Франкфурт → Тель-Авив</p>
 
 </div>
@@ -138,11 +134,8 @@ color:#94a3b8;
 <h2>🏨 Отели</h2>
 
 <ul>
-
 <li>Relaxans Dinkelsbühl</li>
-
 <li>Bergheim 41 Hotel im Alten Hallenbad</li>
-
 </ul>
 
 </div>
@@ -154,15 +147,10 @@ color:#94a3b8;
 <div class="checklist">
 
 <label><input type="checkbox"> Паспорт</label>
-
 <label><input type="checkbox"> Страховка</label>
-
 <label><input type="checkbox"> Водительские права</label>
-
 <label><input type="checkbox"> Билеты</label>
-
 <label><input type="checkbox"> Ваучер автомобиля</label>
-
 <label><input type="checkbox"> Зарядка телефона</label>
 
 </div>
@@ -216,23 +204,22 @@ color:#94a3b8;
 </div>
 
 <footer>
-
 Germany 2026 PRO
-
 </footer>
 
 <script>
 
 const tripDate = new Date("2026-11-24");
 
-function updateCountdown(){
+function updateCountdown() {
 
 const today = new Date();
 
 const diff = tripDate - today;
 
-const days =
-Math.ceil(diff / (1000 * 60 * 60 * 24));
+const days = Math.ceil(
+diff / (1000 * 60 * 60 * 24)
+);
 
 document.getElementById("countdown").innerHTML =
 "До вылета осталось <b>" +
@@ -246,5 +233,4 @@ updateCountdown();
 </script>
 
 </body>
-
 </html>
