@@ -399,3 +399,401 @@ Bergheim 41 Hotel im Alten Hallenbad
 </div>
 
 </div>
+<div class="card">
+
+<h2>✅ Чек-лист поездки</h2>
+
+<div class="check-row">
+<input type="checkbox"> Паспорт
+</div>
+
+<div class="check-row">
+<input type="checkbox"> Страховка
+</div>
+
+<div class="check-row">
+<input type="checkbox"> Водительские права
+</div>
+
+<div class="check-row">
+<input type="checkbox"> Международные права
+</div>
+
+<div class="check-row">
+<input type="checkbox"> Ваучер Alamo
+</div>
+
+<div class="check-row">
+<input type="checkbox"> Билеты Condor
+</div>
+
+<div class="check-row">
+<input type="checkbox"> Зарядки
+</div>
+
+<div class="check-row">
+<input type="checkbox"> Power Bank
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>📝 Личные заметки</h2>
+
+<textarea id="notes">
+
+Рестораны
+
+Покупки
+
+Парковки
+
+Важные заметки
+
+</textarea>
+
+</div>
+
+</div>
+
+<div class="card" id="route">
+
+<h2>📅 Маршрут по дням</h2>
+
+<div class="route-day">
+
+<b>День 1</b>
+
+<br><br>
+
+Франкфурт
+
+→
+
+Wertheim Village
+
+→
+
+Вюрцбург
+
+→
+
+Динкельсбюль
+
+</div>
+
+<div class="route-day">
+
+<b>День 2</b>
+
+<br><br>
+
+Нёрдлинген
+
+→
+
+Харбург
+
+</div>
+
+<div class="route-day">
+
+<b>День 3</b>
+
+<br><br>
+
+Ульм
+
+→
+
+Blaubeuren
+
+</div>
+
+<div class="route-day">
+
+<b>День 4</b>
+
+<br><br>
+
+Нюрнберг
+
+</div>
+
+<div class="route-day">
+
+<b>День 5</b>
+
+<br><br>
+
+Штутгарт
+
+→
+
+Mercedes Museum
+
+</div>
+
+<div class="route-day">
+
+<b>День 6</b>
+
+<br><br>
+
+Гейдельберг
+
+</div>
+
+<div class="route-day">
+
+<b>День 7</b>
+
+<br><br>
+
+Рюдесхайм
+
+→
+
+Бахарах
+
+→
+
+Frankfurt Airport
+
+</div>
+
+</div>
+
+<div class="card" id="budget">
+
+<h2>💰 Бюджет поездки</h2>
+
+<div class="info">
+
+Отели
+
+<br>
+
+Топливо
+
+<br>
+
+Парковки
+
+<br>
+
+Рестораны
+
+<br>
+
+Шопинг
+
+<br>
+
+Непредвиденные расходы
+
+<br><br>
+
+Планируемый бюджет:
+
+<b>1500 EUR</b>
+
+</div>
+
+</div>
+
+<div class="card" id="mapblock">
+
+<h2>🗺️ Карта маршрута</h2>
+
+<div id="map"></div>
+
+</div>
+</div>
+
+<footer>
+
+🇩🇪 Germany 2026 PRO MAX
+
+<br><br>
+
+Персональный путеводитель по Германии
+
+</footer>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script>
+
+/* ==========
+ОБРАТНЫЙ ОТСЧЁТ
+========== */
+
+const tripDate = new Date("2026-11-24");
+
+function updateCountdown(){
+
+const today = new Date();
+
+const diff = tripDate - today;
+
+const days =
+Math.ceil(
+diff/(1000*60*60*24)
+);
+
+document.getElementById("daysleft")
+.innerHTML =
+days + " дней";
+
+}
+
+updateCountdown();
+
+/* ==========
+АВТОСОХРАНЕНИЕ ЗАМЕТОК
+========== */
+
+const notes =
+document.getElementById("notes");
+
+if(notes){
+
+notes.value =
+localStorage.getItem("germany_notes")
+||
+notes.value;
+
+notes.addEventListener(
+"keyup",
+function(){
+
+localStorage.setItem(
+"germany_notes",
+notes.value
+);
+
+}
+);
+
+}
+
+/* ==========
+КАРТА
+========== */
+
+const map =
+L.map('map')
+.setView(
+[49.2,10.1],
+6
+);
+
+L.tileLayer(
+'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+{
+maxZoom:18
+}
+).addTo(map);
+
+const route = [
+
+["Frankfurt Airport",
+50.0379,
+8.5622],
+
+["Wertheim Village",
+49.7488,
+9.5139],
+
+["Würzburg",
+49.7913,
+9.9533],
+
+["Dinkelsbühl",
+49.0690,
+10.3191],
+
+["Nördlingen",
+48.8512,
+10.4886],
+
+["Harburg",
+48.7867,
+10.6890],
+
+["Ulm",
+48.4011,
+9.9876],
+
+["Nürnberg",
+49.4521,
+11.0767],
+
+["Stuttgart",
+48.7758,
+9.1829],
+
+["Heidelberg",
+49.3988,
+8.6724],
+
+["Rüdesheim",
+49.9787,
+7.9243],
+
+["Bacharach",
+50.0556,
+7.7708],
+
+["Frankfurt Airport",
+50.0379,
+8.5622]
+
+];
+
+const polyline = [];
+
+route.forEach(point=>{
+
+polyline.push(
+[
+point[1],
+point[2]
+]
+);
+
+L.marker(
+[
+point[1],
+point[2]
+]
+)
+.addTo(map)
+.bindPopup(
+"<b>" +
+point[0] +
+"</b>"
+);
+
+});
+
+L.polyline(
+polyline,
+{
+color:'#4ea8ff',
+weight:4
+}
+)
+.addTo(map);
+
+</script>
+
+</body>
+
+</html>
+</script>
+
+</body>
+</html>
