@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Германия 2026 PRO</title>
 
@@ -15,7 +18,7 @@ box-sizing:border-box;
 }
 
 body{
-font-family:Segoe UI,Arial,sans-serif;
+font-family:Segoe UI, Arial, sans-serif;
 background:#0f172a;
 color:white;
 }
@@ -47,7 +50,7 @@ background:#1e293b;
 border-radius:20px;
 padding:20px;
 margin-bottom:20px;
-box-shadow:0 0 15px rgba(0,0,0,0.3);
+box-shadow:0 0 15px rgba(0,0,0,0.35);
 }
 
 .card h2{
@@ -62,18 +65,16 @@ border-radius:12px;
 margin-top:10px;
 }
 
-button{
-background:#2563eb;
-color:white;
-border:none;
-padding:10px 15px;
-border-radius:10px;
-cursor:pointer;
-}
-
 .checklist label{
 display:block;
 padding:6px;
+}
+
+textarea{
+width:100%;
+height:120px;
+border-radius:10px;
+padding:10px;
 }
 
 footer{
@@ -83,17 +84,25 @@ color:#94a3b8;
 }
 
 </style>
+
 </head>
 
 <body>
 
 <header>
+
 <h1>🇩🇪 Германия 2026 PRO</h1>
-<p>24–30 ноября 2026 • Франкфурт • Вертхайм • Вюрцбург • Динкельсбюль • Нёрдлинген • Ульм • Нюрнберг • Штутгарт • Гейдельберг</p> 
+
+<p>
+24–30 ноября 2026 • Франкфурт • Вертхайм • Вюрцбург • Динкельсбюль • Нёрдлинген • Ульм • Нюрнберг • Штутгарт • Гейдельберг
+</p>
+
 </header>
 
 <div class="container">
+
 <div class="card">
+
 <h2>⏳ Обратный отсчёт</h2>
 
 <p id="countdown">
@@ -102,18 +111,140 @@ color:#94a3b8;
 
 </div>
 
-<div class="card">  
-  
+<div class="card">
+
 <h2>✈️ Перелёт</h2>
 
 <p>Тель-Авив → Франкфурт</p>
+
 <p>Франкфурт → Тель-Авив</p>
 
 </div>
 
 <div class="card">
+
 <h2>🚗 Автомобиль</h2>
 
 <p>Получение автомобиля во Франкфурте</p>
 
-<textarea style
+<textarea>
+Мои заметки по автомобилю
+</textarea>
+
+</div>
+
+<div class="card">
+
+<h2>🏨 Отели</h2>
+
+<ul>
+
+<li>Relaxans Dinkelsbühl</li>
+
+<li>Bergheim 41 Hotel im Alten Hallenbad</li>
+
+</ul>
+
+</div>
+
+<div class="card">
+
+<h2>✅ Чек-лист поездки</h2>
+
+<div class="checklist">
+
+<label><input type="checkbox"> Паспорт</label>
+
+<label><input type="checkbox"> Страховка</label>
+
+<label><input type="checkbox"> Водительские права</label>
+
+<label><input type="checkbox"> Билеты</label>
+
+<label><input type="checkbox"> Ваучер автомобиля</label>
+
+<label><input type="checkbox"> Зарядка телефона</label>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>📅 Маршрут</h2>
+
+<div class="route-day">
+День 1 • Франкфурт → Wertheim Village → Вюрцбург → Динкельсбюль
+</div>
+
+<div class="route-day">
+День 2 • Нёрдлинген → Харбург
+</div>
+
+<div class="route-day">
+День 3 • Ульм
+</div>
+
+<div class="route-day">
+День 4 • Нюрнберг
+</div>
+
+<div class="route-day">
+День 5 • Штутгарт
+</div>
+
+<div class="route-day">
+День 6 • Гейдельберг
+</div>
+
+<div class="route-day">
+День 7 • Рюдесхайм → Бахарах → Франкфурт
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>💰 Расходы</h2>
+
+<p>
+Здесь позже появится учёт бюджета поездки.
+</p>
+
+</div>
+
+</div>
+
+<footer>
+
+Germany 2026 PRO
+
+</footer>
+
+<script>
+
+const tripDate = new Date("2026-11-24");
+
+function updateCountdown(){
+
+const today = new Date();
+
+const diff = tripDate - today;
+
+const days =
+Math.ceil(diff / (1000 * 60 * 60 * 24));
+
+document.getElementById("countdown").innerHTML =
+"До вылета осталось <b>" +
+days +
+"</b> дней";
+
+}
+
+updateCountdown();
+
+</script>
+
+</body>
+
+</html>
