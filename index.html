@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Германия 2026 PRO</title>
+<title>Германия 2026 PRO MAX</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
 
 <style>
 
@@ -14,70 +23,237 @@ padding:0;
 box-sizing:border-box;
 }
 
+:root{
+
+--bg:#07111f;
+--card:#112136;
+--card2:#1d3557;
+--accent:#4ea8ff;
+--text:#ffffff;
+--subtitle:#b3c8da;
+
+}
+
 body{
-font-family:Segoe UI, Arial, sans-serif;
-background:#0f172a;
+
+font-family:'Montserrat',sans-serif;
+background:
+linear-gradient(180deg,#07111f,#0c1e35);
+
 color:white;
+
 }
 
-header{
-background:linear-gradient(135deg,#1e293b,#111827);
-padding:40px;
+.hero{
+
+height:450px;
+
+background:
+linear-gradient(
+rgba(0,0,0,.55),
+rgba(0,0,0,.55)
+),
+
+url('https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=1600&q=80');
+
+background-size:cover;
+
+background-position:center;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
 text-align:center;
+
+padding:20px;
+
 }
 
-header h1{
-font-size:40px;
-margin-bottom:10px;
+.hero-content{
+
+max-width:900px;
+
 }
 
-header p{
-font-size:18px;
-color:#cbd5e1;
+.hero h1{
+
+font-size:58px;
+
+margin-bottom:15px;
+
+}
+
+.hero p{
+
+font-size:22px;
+
+color:#dde7f0;
+
 }
 
 .container{
-max-width:1200px;
+
+max-width:1350px;
+
 margin:auto;
-padding:20px;
+
+padding:25px;
+
+}
+
+.grid{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(320px,1fr));
+
+gap:20px;
+
 }
 
 .card{
-background:#1e293b;
-border-radius:20px;
-padding:20px;
-margin-bottom:20px;
-box-shadow:0 0 15px rgba(0,0,0,0.35);
+
+background:var(--card);
+
+border-radius:22px;
+
+padding:25px;
+
+box-shadow:
+0 6px 25px rgba(0,0,0,0.35);
+
 }
 
 .card h2{
-margin-bottom:15px;
-color:#60a5fa;
+
+margin-bottom:18px;
+
+color:var(--accent);
+
+}
+
+.big-number{
+
+font-size:48px;
+
+font-weight:700;
+
+color:#7ef29c;
+
+}
+
+.info{
+
+color:var(--subtitle);
+
+line-height:1.8;
+
 }
 
 .route-day{
-background:#334155;
+
+background:#1e314f;
+
 padding:15px;
-border-radius:12px;
-margin-top:10px;
+
+margin-top:12px;
+
+border-radius:14px;
+
 }
 
-.checklist label{
-display:block;
-padding:6px;
+.route-day:hover{
+
+background:#284368;
+
+}
+
+.check-row{
+
+margin-bottom:10px;
+
+}
+
+.check-row input{
+
+transform:scale(1.4);
+
+margin-right:8px;
+
 }
 
 textarea{
+
 width:100%;
-height:120px;
-border-radius:10px;
-padding:10px;
+
+height:140px;
+
+border:none;
+
+border-radius:15px;
+
+padding:15px;
+
+font-size:15px;
+
+}
+
+#map{
+
+height:600px;
+
+border-radius:20px;
+
 }
 
 footer{
+
+margin-top:40px;
+
 padding:30px;
+
 text-align:center;
-color:#94a3b8;
+
+color:#9fb2c5;
+
+}
+
+.menu{
+
+display:flex;
+
+justify-content:center;
+
+gap:15px;
+
+flex-wrap:wrap;
+
+margin-top:25px;
+
+}
+
+.menu a{
+
+text-decoration:none;
+
+background:#1b3150;
+
+padding:12px 18px;
+
+border-radius:12px;
+
+color:white;
+
+}
+
+.menu a:hover{
+
+background:#294971;
+
 }
 
 </style>
@@ -86,34 +262,93 @@ color:#94a3b8;
 
 <body>
 
-<header>
+<section class="hero">
 
-<h1>🇩🇪 Германия 2026 PRO</h1>
+<div class="hero-content">
+
+<h1>🇩🇪 Германия 2026 PRO MAX</h1>
 
 <p>
-24–30 ноября 2026 • Франкфурт • Вертхайм • Вюрцбург • Динкельсбюль • Нёрдлинген • Ульм • Нюрнберг • Штутгарт • Гейдельберг
+
+24–30 ноября 2026
+
+<br>
+
+Франкфурт • Вертхайм • Вюрцбург • Динкельсбюль • Нёрдлинген • Ульм • Нюрнберг • Штутгарт • Гейдельберг • Рюдесхайм • Бахарах
+
 </p>
 
-</header>
+<div class="menu">
+
+<a href="#countdown">Обратный отсчёт</a>
+
+<a href="#flights">Перелёты</a>
+
+<a href="#hotels">Отели</a>
+
+<a href="#route">Маршрут</a>
+
+<a href="#mapblock">Карта</a>
+
+<a href="#budget">Бюджет</a>
+
+</div>
+
+</div>
+
+</section>
 
 <div class="container">
 
-<div class="card">
+<div class="grid">
 
-<h2>⏳ Обратный отсчёт</h2>
+<div class="card" id="countdown">
 
-<p id="countdown">
+<h2>⏳ До вылета</h2>
+
+<div class="big-number" id="daysleft">
 Загрузка...
+</div>
+
+<p class="info">
+
+Следующее событие:
+<br>
+✈️ Вылет Тель-Авив → Франкфурт
+
 </p>
 
 </div>
 
-<div class="card">
+<div class="card" id="flights">
 
-<h2>✈️ Перелёт</h2>
+<h2>✈️ Перелёты</h2>
 
-<p>Тель-Авив → Франкфурт</p>
-<p>Франкфурт → Тель-Авив</p>
+<div class="info">
+
+Туда:
+
+<br><br>
+
+Condor DE4309
+
+<br>
+
+TLV → FRA
+
+<br><br>
+
+Обратно:
+
+<br><br>
+
+Condor DE4308
+
+<br>
+
+FRA → TLV
+
+</div>
 
 </div>
 
@@ -121,116 +356,46 @@ color:#94a3b8;
 
 <h2>🚗 Автомобиль</h2>
 
-<p>Получение автомобиля во Франкфурте</p>
+<div class="info">
 
-<textarea>
-Мои заметки по автомобилю
-</textarea>
+Alamo Frankfurt Airport
+
+<br><br>
+
+Получение автомобиля
+
+<br>
+
+Возврат автомобиля
+
+<br><br>
+
+Парковки
+
+<br>
+
+Топливо
+
+<br>
+
+Пробег
 
 </div>
 
-<div class="card">
+</div>
+
+<div class="card" id="hotels">
 
 <h2>🏨 Отели</h2>
 
-<ul>
-<li>Relaxans Dinkelsbühl</li>
-<li>Bergheim 41 Hotel im Alten Hallenbad</li>
-</ul>
+<div class="info">
 
-</div>
+Relaxans Dinkelsbühl
 
-<div class="card">
+<br><br>
 
-<h2>✅ Чек-лист поездки</h2>
-
-<div class="checklist">
-
-<label><input type="checkbox"> Паспорт</label>
-<label><input type="checkbox"> Страховка</label>
-<label><input type="checkbox"> Водительские права</label>
-<label><input type="checkbox"> Билеты</label>
-<label><input type="checkbox"> Ваучер автомобиля</label>
-<label><input type="checkbox"> Зарядка телефона</label>
+Bergheim 41 Hotel im Alten Hallenbad
 
 </div>
 
 </div>
-
-<div class="card">
-
-<h2>📅 Маршрут</h2>
-
-<div class="route-day">
-День 1 • Франкфурт → Wertheim Village → Вюрцбург → Динкельсбюль
-</div>
-
-<div class="route-day">
-День 2 • Нёрдлинген → Харбург
-</div>
-
-<div class="route-day">
-День 3 • Ульм
-</div>
-
-<div class="route-day">
-День 4 • Нюрнберг
-</div>
-
-<div class="route-day">
-День 5 • Штутгарт
-</div>
-
-<div class="route-day">
-День 6 • Гейдельберг
-</div>
-
-<div class="route-day">
-День 7 • Рюдесхайм → Бахарах → Франкфурт
-</div>
-
-</div>
-
-<div class="card">
-
-<h2>💰 Расходы</h2>
-
-<p>
-Здесь позже появится учёт бюджета поездки.
-</p>
-
-</div>
-
-</div>
-
-<footer>
-Germany 2026 PRO
-</footer>
-
-<script>
-
-const tripDate = new Date("2026-11-24");
-
-function updateCountdown() {
-
-const today = new Date();
-
-const diff = tripDate - today;
-
-const days = Math.ceil(
-diff / (1000 * 60 * 60 * 24)
-);
-
-document.getElementById("countdown").innerHTML =
-"До вылета осталось <b>" +
-days +
-"</b> дней";
-
-}
-
-updateCountdown();
-
-</script>
-
-</body>
-</html>
